@@ -9,7 +9,7 @@ st.set_page_config(
 st.title("Number Plate Reader")
 st.write("Upload a vehicle image and detect its license plate.")
 
-uploaded_file = st.file_uploader(
+img = st.file_uploader(
     "Choose an image",
     type=["jpg", "jpeg", "png"]
 )
@@ -19,8 +19,8 @@ left, right = st.columns(2)
 with left:
     st.subheader("Uploaded Image")
 
-    if uploaded_file:
-        st.image(uploaded_file, use_container_width=True)
+    if img:
+        st.image(img, use_container_width=True)
     else:
         st.info("Upload an image to begin.")
 
