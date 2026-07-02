@@ -4,3 +4,7 @@ def preposesser(image):
     bi = cv2.bilateralFilter(gray, 9, 75, 75)
     equal = cv2.equalizeHist(bi)
     return equal
+def detect_edges(equal):
+    blur = cv2.GaussianBlur(equal, (5,5), 0)
+    edges = cv2.Canny(blur, 100, 200)
+    return edges
