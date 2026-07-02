@@ -1,11 +1,13 @@
 import cv2
 from src.detector import preposesser
 from src.detector import detect_edges
+from src.detector import find_contours
 
 image = cv2.imread("images\stocksnap-car-2592136_1920.jpg")
 
 processed = preposesser(image)
 edges = detect_edges(processed)
+
 print(image.shape)
 
 display = cv2.resize(image, (800, 600))
