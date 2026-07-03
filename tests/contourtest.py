@@ -11,13 +11,22 @@ edges = detect_edges(processed)
 c_image,c = find_contours(edges,image)
 print(image.shape)
 print(len(c))
-# for i, contour in enumerate(c):
-    # print(f"Contour {i}")
-    # print("Area:", cv2.contourArea(contour))
-    # print("Perimeter:", cv2.arcLength(contour, True))
-    # print("Number of points:", len(contour))
-    # print("-" * 30)
+for i, contour in enumerate(c[:20]):
+
+    area = cv2.contourArea(contour)
+    perimeter = cv2.arcLength(contour, True)
+    approx = cv2.approxPolyDP(contour, 0.02 * perimeter, True)
+
+    x, y, w, h = cv2.boundingRect(contour)
+    # print(x,y,w,h)
+    # print(
+    #     f"{i}: area={area:.0f}, "
+    #     f"vertices={len(approx)}, "
+    #     f"ratio={w/h:.2f}, "
+    #     f"y={y}"
+    # )
 a = find_plate(c,image)
+
 a =cv2.resize(a, (800, 600))
 cv2.imshow(" ",a)
 cv2.waitKey(0)
